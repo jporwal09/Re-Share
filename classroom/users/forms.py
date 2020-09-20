@@ -29,11 +29,7 @@ class UserUpdateForm(forms.ModelForm):
         fields = ['username', 'email']
 
         
-    def clean_email(self):
-        email = self.cleaned_data.get("email")
-        if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("Email is already used by some other user.")
-        return email        
+          
     
 
 class ProfileUpdateForm(forms.ModelForm):
