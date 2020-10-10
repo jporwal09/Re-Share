@@ -12,4 +12,4 @@ class TopicForm(ModelForm):
 class MaterialForm(ModelForm):
 	class Meta:
 		model = Material
-		fields= ['url','desc','free'] 
+		fields= ['url','desc'] 

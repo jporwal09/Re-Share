@@ -20,8 +20,12 @@ class Material(models.Model):
 	desc =  models.TextField(max_length=500,default = 'None')
 	created = models.DateTimeField('date created',default = timezone.now)
 	last_updated = models.DateTimeField('last updated',default = timezone.now)
-	free = models.BooleanField(null= False)
 	user = models.ForeignKey(User,on_delete = models.PROTECT)
+	likes = models.ManyToManyField(User, related_name = 'Material_op')
+
+	@property
+	def total_likes(self):
+		return self.likes.count()
 
 	def __str__(self):
 		return self.url

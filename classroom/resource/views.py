@@ -81,8 +81,7 @@ def newMaterial(request, topic_id):
         	if form.is_valid():
         		url= form.cleaned_data.get('url')
         		desc = form.cleaned_data.get('desc')
-        		free = True if request.POST['free'] == 'Free' else False
-        		res = Material(url = url,topic = topic,user = request.user,desc=desc, free=free)
+        		res = Material(url = url,topic = topic,user = request.user,desc=desc)
         		res.save()
         		return HttpResponseRedirect(reverse('detail', args=(topic.id,)))           
         else:
@@ -92,6 +91,13 @@ def newMaterial(request, topic_id):
     else:
         return HttpResponseRedirect(reverse('home'))
         
+def likeview(request,pk):
+    print(pk)
+    post = get_object_or_404(Material , pk=pk)
+    print(post.url)
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('detail', args= [str(post.topic.id)]))
+
            
 def github(request):
     user = {}
