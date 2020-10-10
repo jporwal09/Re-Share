@@ -1,0 +1,27 @@
+{% extends "users/home.html" %}
+{% block content %}
+	<h1>{{ topic.name }}</h1>
+	<a href="{% url 'addmaterial' topic.id %}">Add Resource</a>
+	<br>
+	{% if topic.material_set.count == 0 %}
+		<div>
+   		 <strong>Oooops!</strong> There are no resources for this topic. Be the first to add one.
+		</div>
+
+	{% else %}
+		{% for material in topic.material_set.all %}
+        <article class="media content-section">	
+          <div class="media-body">
+          	<div class="article-metadata">User: 
+              <a class="mr-2" href="{% url 'userhome' %}">{{ topic.user }}</a>
+            </div>
+            <a class="article-title" href="{{ material.url }}">{{ material.url | truncatechars:20}}</a> 
+            <p><small class="text-muted">{{ material.desc }}</small></p>
+          
+          </div>
+        </article>
+    {% endfor %}
+	{% endif %}	
+
+
+{% endblock content %}

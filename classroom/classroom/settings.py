@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'resource.apps.ResourceConfig',
     'crispy_forms',
     'django.contrib.sites',
     'allauth',
@@ -135,7 +136,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'userhome'
 
 LOGIN_URL = 'login'
 

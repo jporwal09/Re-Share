@@ -1,0 +1,25 @@
+{% extends "users/home.html" %}
+{% block content %}
+  <form method="get">
+    <input type="text" name="qname">
+    <button type="submit">search </button>
+  </form>
+    {% if topicop %}
+    <h1>Search Result:</h1>
+    {% endif %}
+    {% for topic in topicop %}
+      <article class="media content-section">
+          <div class="media-body">
+            <h3><a class="article-title" href="{% url 'detail' topic.id %}">{{ topic.name }}</a>{{ topic.Material_count }}</h3>
+          </div>
+        </article>
+    {% endfor %}
+    <h1>Topics:</h1>
+    {% for topic in topic %}
+        <article class="media content-section">
+          <div class="media-body">
+            <h3><a class="article-title" href="{% url 'detail' topic.id %}">{{ topic.name }}</a>{{ topic.Material_count }}</h3>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

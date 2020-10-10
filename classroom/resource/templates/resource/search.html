@@ -1,0 +1,11 @@
+{% extends "users/home.html" %}
+{% block content %}
+	<form method="get">
+    <input type="text" name="qname">
+    <button type="submit">search </button>
+  </form>
+    <h1>Search Result:</h1>
+    {% for top in topic %}
+    	<h3>{{ top.name }}</h3>
+    {% endfor %}
+{% endblock content %}

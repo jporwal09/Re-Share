@@ -1,0 +1,12 @@
+{% extends "users/home.html" %}
+{% block content %}
+  <h2>Codeforces API</h2>
+  <form method="get">
+    <input type="text" name="username">
+    <button type="submit">search </button>
+  </form>
+  {% if user %}
+  	<marquee>{{ user.result.0.rank }}</marquee> 
+  {% endif %}	
+  
+{% endblock content %}
