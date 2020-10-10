@@ -1,7 +1,8 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect ,get_object_or_404
 from .forms import UserRegisterForm , UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import Profile
 
 
 # Create your views here.
@@ -45,3 +46,33 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+@login_required
+def diffprofile(request,user_id):
+    id = request.user.id
+    print(id)
+    if id==user_id:
+       return redirect('profile')
+    else:
+        if user_id != 1:
+            user_id=user_id-11
+        pro = get_object_or_404(Profile,pk=user_id)
+        print(pro.user.username)
+        return render(request, 'users/newpp.html',{'used':pro})
+        
+
+    
+
+    
+
+
+
+
+
+
+"""else:
+        if user_id != 1:
+        user_id = user_id-11
+        pro = get_object_or_404(Profile,pk=user_id)
+        print(pro.user.username)
+        return render(request, 'users/newpp.html',{'used':pro})"""    

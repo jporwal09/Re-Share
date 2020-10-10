@@ -28,6 +28,7 @@ urlpatterns = [
     path('userfp/', res_views.userhome , name = 'userhome'),
     path('search/', res_views.search , name = 'search'),
     path('addtopic/', res_views.newTopic , name = 'addtopic'),
+    path('<int:user_id>/user/', user_views.diffprofile , name = 'userop'),
     path('<int:topic_id>/addmaterial/', res_views.newMaterial, name='addmaterial'),
     path('github/', res_views.github , name = 'git'),
     path('cf/', res_views.codef , name = 'cf'),
