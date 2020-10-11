@@ -10,16 +10,18 @@
     {% for topic in topicop %}
       <article class="media content-section">
           <div class="media-body">
-            <h3><a class="article-title" href="{% url 'detail' topic.id %}">{{ topic.name }}</a>{{ topic.Material_count }}</h3>
+            <h3><a class="article-title" href="{% url 'detail' topic.id %}">{{ topic.name }}</a></h3>
           </div>
+          <h3>{{ topic.Material_count }}</h3>
         </article>
     {% endfor %}
     <h1>Topics:</h1>
     {% for topic in topic %}
         <article class="media content-section">
           <div class="media-body">
-            <h3><a class="article-title" href="{% url 'detail' topic.id %}">{{ topic.name }}</a>{{ topic.Material_count }}</h3>
+            <h3><a class="article-title" href="{% url 'detail' topic.id %}">{{ topic.name }}</a></h3>
           </div>
+          <h3>{{ topic.Material_count }}</h3>
         </article>
     {% endfor %}
 {% endblock content %}

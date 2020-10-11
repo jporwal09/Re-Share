@@ -1,8 +1,10 @@
 from django.shortcuts import render , redirect ,get_object_or_404
 from .forms import UserRegisterForm , UserUpdateForm, ProfileUpdateForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Profile
+from resource.models import Material
 
 
 # Create your views here.
@@ -54,11 +56,14 @@ def diffprofile(request,user_id):
     if id==user_id:
        return redirect('profile')
     else:
+        ogi = user_id
         if user_id != 1:
             user_id=user_id-11
         pro = get_object_or_404(Profile,pk=user_id)
-        print(pro.user.username)
-        return render(request, 'users/newpp.html',{'used':pro})
+        user = get_object_or_404(User, pk = ogi)
+        op = Material.objects.filter(user= user).order_by('-created')
+        
+        return render(request, 'users/newpp.html',{'used':pro , 'Material':op})
         
 
     

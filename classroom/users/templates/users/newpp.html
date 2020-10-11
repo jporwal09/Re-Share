@@ -10,5 +10,17 @@
         </div>
       </div>
       <!-- FORM HERE -->
+       <h1>Resources Shared :</h1>
+    {% for material in Material %}
+        <article class="media content-section"> 
+          <div class="media-body">
+            <div class="article-metadata">Topic: 
+              <a class="mr-2" href="{% url 'detail' material.topic.id %}">{{ material.topic }}</a>
+            </div>
+            <a class="article-title" href="{{ material.url }}">{{ material.url | truncatechars:20}}</a> 
+            <p><small class="text-muted">{{ material.desc }}</small></p>
+          </div>
+        </article>
+    {% endfor %}
     </div>
 {% endblock content %}
