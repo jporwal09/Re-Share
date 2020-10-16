@@ -17,11 +17,18 @@
             </div>
             <a class="article-title" href="{{ material.url }}">{{ material.url | truncatechars:20}}</a> 
             <p><small class="text-muted">{{ material.desc }}</small></p>
+          
             <form action ="{% url 'like_post' material.id %}" method="POST" >
             {% csrf_token %}
             <button type="submit" , name="post_id",value ="{{ material.id }}" , class="btn btn-primary btn-sm">Like {{ material.total_likes }} </button>
           </form>
+          
           </div>
+          <form action ="{% url 'fav_post' material.id %}" method="POST" >
+            {% csrf_token %}
+            <button type="submit" , name="post_id",value ="{{ material.id }}" , class="btn btn-primary btn-sm">Fav</button>
+          </form>
+          
         </article>
     {% endfor %}
   {% endif %} 

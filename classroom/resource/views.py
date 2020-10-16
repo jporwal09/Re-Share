@@ -98,6 +98,19 @@ def likeview(request,pk):
     post.likes.add(request.user)
     return HttpResponseRedirect(reverse('detail', args= [str(post.topic.id)]))
 
+def favview(request,pk):
+    print(pk)
+    post = get_object_or_404(Material , pk=pk)
+    print(post.url)
+    post.fav.add(request.user)
+    return HttpResponseRedirect(reverse('detail', args= [str(post.topic.id)]))   
+     
+@login_required
+def bookmarked(request):
+    user = request.user
+    fav_res = user.favorite.all()
+    return render(request,'resource/favourite.html',{'fav_res':fav_res})      
+
            
 def github(request):
     user = {}

@@ -22,6 +22,7 @@ class Material(models.Model):
 	last_updated = models.DateTimeField('last updated',default = timezone.now)
 	user = models.ForeignKey(User,on_delete = models.PROTECT)
 	likes = models.ManyToManyField(User, related_name = 'Material_op')
+	fav = models.ManyToManyField(User,related_name='favorite')
 
 	@property
 	def total_likes(self):

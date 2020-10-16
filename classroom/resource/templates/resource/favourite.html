@@ -1,0 +1,16 @@
+{% extends "users/home.html" %}
+{% block content %}
+  <h1>Fav</h1>
+  <br>
+    {% for material in fav_res %}
+        <article class="media content-section"> 
+          <div class="media-body">
+            <div class="article-metadata">Topic: 
+              <a class="mr-2" href="{% url 'userop' material.topic.id %}">{{ material.topic }}</a>
+            </div>
+            <a class="article-title" href="{{ material.url }}">{{ material.url | truncatechars:20}}</a> 
+            <p><small class="text-muted">{{ material.desc }}</small></p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
