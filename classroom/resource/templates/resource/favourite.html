@@ -6,7 +6,7 @@
         <article class="media content-section"> 
           <div class="media-body">
             <div class="article-metadata">Topic: 
-              <a class="mr-2" href="{% url 'userop' material.topic.id %}">{{ material.topic }}</a>
+              <a class="mr-2" href="{% url 'detail' material.topic.id %}">{{ material.topic }}</a>
             </div>
             <a class="article-title" href="{{ material.url }}">{{ material.url | truncatechars:20}}</a> 
             <p><small class="text-muted">{{ material.desc }}</small></p>
